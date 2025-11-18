@@ -1,0 +1,176 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Execute the entire Ansible role imperatively",
+  "input_method": "environment",
+  "parameters": {
+    "docker_edition": {
+      "description": "Edition can be one of: 'ce' (Community Edition) or 'ee' (Enterprise Edition).",
+      "type": "Optional[String]"
+    },
+    "docker_packages": {
+      "description": "Ansible role variable (default: [\"docker-{{ docker_edition }}\", \"docker-{{ docker_edition }}-cli\", \"docker-{{ docker_edition }}-rootless-extras\", \"containerd.io\", \"docker-buildx-plugin\"])",
+      "type": "Optional[Array]"
+    },
+    "docker_packages_state": {
+      "description": "Ansible role variable (default: present)",
+      "type": "Optional[String]"
+    },
+    "docker_obsolete_packages": {
+      "description": "Ansible role variable (default: [\"docker\", \"docker.io\", \"docker-engine\", \"docker-doc\", \"docker-compose\", \"docker-compose-v2\", \"podman-docker\", \"containerd\", \"runc\"])",
+      "type": "Optional[Array]"
+    },
+    "docker_service_manage": {
+      "description": "Service options.",
+      "type": "Optional[Boolean]"
+    },
+    "docker_service_state": {
+      "description": "Ansible role variable (default: started)",
+      "type": "Optional[String]"
+    },
+    "docker_service_enabled": {
+      "description": "Ansible role variable (default: true)",
+      "type": "Optional[Boolean]"
+    },
+    "docker_service_start_command": {
+      "description": "Ansible role variable (default: )",
+      "type": "Optional[String]"
+    },
+    "docker_restart_handler_state": {
+      "description": "Ansible role variable (default: restarted)",
+      "type": "Optional[String]"
+    },
+    "docker_install_compose_plugin": {
+      "description": "Docker Compose Plugin options.",
+      "type": "Optional[Boolean]"
+    },
+    "docker_compose_package": {
+      "description": "Ansible role variable (default: docker-compose-plugin)",
+      "type": "Optional[String]"
+    },
+    "docker_compose_package_state": {
+      "description": "Ansible role variable (default: present)",
+      "type": "Optional[String]"
+    },
+    "docker_install_compose": {
+      "description": "Docker Compose options.",
+      "type": "Optional[Boolean]"
+    },
+    "docker_compose_version": {
+      "description": "Ansible role variable (default: v2.32.1)",
+      "type": "Optional[String]"
+    },
+    "docker_compose_arch": {
+      "description": "Ansible role variable (default: {{ ansible_facts.architecture }})",
+      "type": "Optional[String]"
+    },
+    "docker_compose_url": {
+      "description": "Ansible role variable (default: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-{{ docker_compose_arch }})",
+      "type": "Optional[String]"
+    },
+    "docker_compose_path": {
+      "description": "Ansible role variable (default: /usr/local/bin/docker-compose)",
+      "type": "Optional[String]"
+    },
+    "docker_add_repo": {
+      "description": "Enable repo setup",
+      "type": "Optional[Boolean]"
+    },
+    "docker_repo_url": {
+      "description": "Docker repo URL.",
+      "type": "Optional[String]"
+    },
+    "docker_apt_release_channel": {
+      "description": "Used only for Debian/Ubuntu/Pop!_OS/Linux Mint. Switch 'stable' to 'nightly' if needed.",
+      "type": "Optional[String]"
+    },
+    "docker_apt_ansible_distribution": {
+      "description": "and is only necessary until Docker officially supports them.",
+      "type": "Optional[String]"
+    },
+    "docker_apt_gpg_key": {
+      "description": "Ansible role variable (default: {{ docker_repo_url }}/{{ docker_apt_ansible_distribution | lower }}/gpg)",
+      "type": "Optional[String]"
+    },
+    "docker_apt_filename": {
+      "description": "Ansible role variable (default: docker)",
+      "type": "Optional[String]"
+    },
+    "docker_yum_repo_url": {
+      "description": "Used only for RedHat/CentOS/Fedora.",
+      "type": "Optional[String]"
+    },
+    "docker_yum_repo_enable_nightly": {
+      "description": "Ansible role variable (default: 0)",
+      "type": "Optional[String]"
+    },
+    "docker_yum_repo_enable_test": {
+      "description": "Ansible role variable (default: 0)",
+      "type": "Optional[String]"
+    },
+    "docker_yum_gpg_key": {
+      "description": "Ansible role variable (default: {{ docker_repo_url }}/{{ 'fedora' if ansible_facts.distribution == 'Fedora' else 'rhel' if ansible_facts.distribution == 'RedHat' else 'centos' }}/gpg)",
+      "type": "Optional[String]"
+    },
+    "docker_users": {
+      "description": "A list of users who will be added to the docker group.",
+      "type": "Optional[Array]"
+    },
+    "docker_daemon_options": {
+      "description": "Docker daemon options as a dict",
+      "type": "Optional[Hash]"
+    },
+    "par_tags": {
+      "description": "An array of Ansible tags to execute (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_skip_tags": {
+      "description": "An array of Ansible tags to skip (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_start_at_task": {
+      "description": "The name of the task to start execution at (optional)",
+      "type": "Optional[String]"
+    },
+    "par_limit": {
+      "description": "Limit playbook execution to specific hosts (optional)",
+      "type": "Optional[String]"
+    },
+    "par_verbose": {
+      "description": "Enable verbose output from Ansible (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_check_mode": {
+      "description": "Run Ansible in check mode (dry-run) (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_timeout": {
+      "description": "Timeout in seconds for playbook execution (optional)",
+      "type": "Optional[Integer]"
+    },
+    "par_user": {
+      "description": "Remote user to use for Ansible connections (optional)",
+      "type": "Optional[String]"
+    },
+    "par_env_vars": {
+      "description": "Additional environment variables for ansible-playbook execution (optional)",
+      "type": "Optional[Hash]"
+    }
+  },
+  "implementations": [
+    {
+      "name": "paw_ansible_role_docker.sh",
+      "requirements": [
+        "shell"
+      ],
+      "input_method": "environment"
+    },
+    {
+      "name": "paw_ansible_role_docker.ps1",
+      "requirements": [
+        "powershell"
+      ],
+      "input_method": "environment"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+---
+paw_ansible_role_docker::docker_edition: ce
+paw_ansible_role_docker::docker_packages:
+- docker-{{ docker_edition }}
+- docker-{{ docker_edition }}-cli
+- docker-{{ docker_edition }}-rootless-extras
+- containerd.io
+- docker-buildx-plugin
+paw_ansible_role_docker::docker_packages_state: present
+paw_ansible_role_docker::docker_obsolete_packages:
+- docker
+- docker.io
+- docker-engine
+- docker-doc
+- docker-compose
+- docker-compose-v2
+- podman-docker
+- containerd
+- runc
+paw_ansible_role_docker::docker_service_manage: true
+paw_ansible_role_docker::docker_service_state: started
+paw_ansible_role_docker::docker_service_enabled: true
+paw_ansible_role_docker::docker_service_start_command: ''
+paw_ansible_role_docker::docker_restart_handler_state: restarted
+paw_ansible_role_docker::docker_install_compose_plugin: true
+paw_ansible_role_docker::docker_compose_package: docker-compose-plugin
+paw_ansible_role_docker::docker_compose_package_state: present
+paw_ansible_role_docker::docker_install_compose: false
+paw_ansible_role_docker::docker_compose_version: v2.32.1
+paw_ansible_role_docker::docker_compose_arch: "{{ ansible_facts.architecture }}"
+paw_ansible_role_docker::docker_compose_url: https://github.com/docker/compose/releases/download/{{
+  docker_compose_version }}/docker-compose-linux-{{ docker_compose_arch }}
+paw_ansible_role_docker::docker_compose_path: "/usr/local/bin/docker-compose"
+paw_ansible_role_docker::docker_add_repo: true
+paw_ansible_role_docker::docker_repo_url: https://download.docker.com/linux
+paw_ansible_role_docker::docker_apt_release_channel: stable
+paw_ansible_role_docker::docker_apt_ansible_distribution: "{{ 'ubuntu' if ansible_facts.distribution
+  in ['Pop!_OS', 'Linux Mint'] else ansible_facts.distribution }}"
+paw_ansible_role_docker::docker_apt_gpg_key: "{{ docker_repo_url }}/{{ docker_apt_ansible_distribution
+  | lower }}/gpg"
+paw_ansible_role_docker::docker_apt_filename: docker
+paw_ansible_role_docker::docker_yum_repo_url: "{{ docker_repo_url }}/{{ 'fedora' if
+  ansible_facts.distribution == 'Fedora' else 'rhel' if ansible_facts.distribution
+  == 'RedHat' else 'centos' }}/docker-{{ docker_edition }}.repo"
+paw_ansible_role_docker::docker_yum_repo_enable_nightly: '0'
+paw_ansible_role_docker::docker_yum_repo_enable_test: '0'
+paw_ansible_role_docker::docker_yum_gpg_key: "{{ docker_repo_url }}/{{ 'fedora' if
+  ansible_facts.distribution == 'Fedora' else 'rhel' if ansible_facts.distribution
+  == 'RedHat' else 'centos' }}/gpg"
+paw_ansible_role_docker::docker_users: []
+paw_ansible_role_docker::docker_daemon_options: {}
