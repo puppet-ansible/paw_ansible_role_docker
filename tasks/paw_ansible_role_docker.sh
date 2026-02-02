@@ -235,14 +235,6 @@ if [ -n "$PT_docker_yum_repo_url" ]; then
   fi
   EXTRA_VARS="$EXTRA_VARS\"docker_yum_repo_url\": \"$PT_docker_yum_repo_url\""
 fi
-if [ -n "$PT_docker_yum_repo_enable_nightly" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"docker_yum_repo_enable_nightly\": \"$PT_docker_yum_repo_enable_nightly\""
-fi
 if [ -n "$PT_docker_yum_repo_enable_test" ]; then
   if [ "$FIRST" = true ]; then
     FIRST=false

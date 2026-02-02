@@ -29,7 +29,6 @@ include paw_ansible_role_docker
 #   docker_apt_gpg_key => '{{ docker_repo_url }}/{{ docker_apt_ansible_distribution | lower }}/gpg',
 #   docker_apt_filename => 'docker',
 #   docker_yum_repo_url => '{{ docker_repo_url }}/{{ \'fedora\' if ansible_facts.distribution == \'Fedora\' else \'rhel\' if ansible_facts.distribution == \'RedHat\' else \'centos\' }}/docker-{{ docker_edition }}.repo',
-#   docker_yum_repo_enable_nightly => '0',
 #   docker_yum_repo_enable_test => '0',
 #   docker_yum_gpg_key => '{{ docker_repo_url }}/{{ \'fedora\' if ansible_facts.distribution == \'Fedora\' else \'rhel\' if ansible_facts.distribution == \'RedHat\' else \'centos\' }}/gpg',
 #   docker_users => [],

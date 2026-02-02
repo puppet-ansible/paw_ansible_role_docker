@@ -42,7 +42,6 @@ paw_ansible_role_docker::docker_apt_filename: docker
 paw_ansible_role_docker::docker_yum_repo_url: "{{ docker_repo_url }}/{{ 'fedora' if
   ansible_facts.distribution == 'Fedora' else 'rhel' if ansible_facts.distribution
   == 'RedHat' else 'centos' }}/docker-{{ docker_edition }}.repo"
-paw_ansible_role_docker::docker_yum_repo_enable_nightly: '0'
 paw_ansible_role_docker::docker_yum_repo_enable_test: '0'
 paw_ansible_role_docker::docker_yum_gpg_key: "{{ docker_repo_url }}/{{ 'fedora' if
   ansible_facts.distribution == 'Fedora' else 'rhel' if ansible_facts.distribution

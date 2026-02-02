@@ -135,9 +135,6 @@ if ($env:PT_docker_apt_filename) {
 if ($env:PT_docker_yum_repo_url) {
   $ExtraVars['docker_yum_repo_url'] = $env:PT_docker_yum_repo_url
 }
-if ($env:PT_docker_yum_repo_enable_nightly) {
-  $ExtraVars['docker_yum_repo_enable_nightly'] = $env:PT_docker_yum_repo_enable_nightly
-}
 if ($env:PT_docker_yum_repo_enable_test) {
   $ExtraVars['docker_yum_repo_enable_test'] = $env:PT_docker_yum_repo_enable_test
 }
