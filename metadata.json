@@ -49,9 +49,12 @@
     "docker"
   ],
   "ansible_conversion": {
-    "converter_version": "0.4.0",
-    "converted_at": "2026-02-04T14:04:46Z",
+    "converter_version": "0.5.2",
+    "converted_at": "2026-02-04T14:48:18Z",
     "source_version": "8.0.0",
     "source_type": "role"
-  }
+  },
+  "pdk-version": "3.4.0",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#3.4.0",
+  "template-ref": "tags/3.4.0-0-gd3cc13f"
 }
