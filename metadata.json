@@ -2,7 +2,7 @@
   "name": "chrisallen-paw_ansible_role_docker",
   "version": "8.0.0",
   "author": "chrisallen",
-  "summary": "Converted from Ansible role on 2026-02-04",
+  "summary": "Converted from Ansible role on 2026-02-05",
   "license": "Apache-2.0",
   "source": "https://github.com/example/converted-module",
   "project_page": "https://github.com/example/converted-module",
@@ -50,7 +50,7 @@
   ],
   "ansible_conversion": {
     "converter_version": "0.5.2",
-    "converted_at": "2026-02-04T14:48:18Z",
+    "converted_at": "2026-02-05T10:04:59Z",
     "source_version": "8.0.0",
     "source_type": "role"
   },
